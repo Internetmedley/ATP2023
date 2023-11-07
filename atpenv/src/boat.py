@@ -1,6 +1,6 @@
 from enum import Enum
 from atplogger import log_arguments
-
+import distance_sensor
 
 class BoatState(Enum):
     ON_LAND=1
@@ -19,3 +19,8 @@ class Boat:
         else:
             return state
 
+    def move_into_lock(self, state: BoatState, sensor: distance_sensor.DistanceSensor) -> BoatState:
+        if(sensor.get_value() <= 10):
+            return BoatState.IN_LOCK
+        else:
+            return state

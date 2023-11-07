@@ -5,7 +5,7 @@
 //Adafruit_VL53L0X lox = Adafruit_VL53L0X();
 namespace py = pybind11;
 
-enum class state_t{}
+//enum class state_t{}
 
 class DistanceSensor{
     int val;

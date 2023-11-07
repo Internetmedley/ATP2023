@@ -42,20 +42,20 @@ class Test3_Boot_doorlaten(unittest.TestCase):
     def test_from_land_to_water(self):
         b = boat.Boat()
         boatState1 = boat.BoatState.ON_LAND
-        boatState2 = b.next_phase_land_to_water(boatState1)
-        boatState3 = b.next_phase_land_to_water(boatState2)
-
-
-        self.assertEqual(boatState1, boat.BoatState.ON_LAND)
+        sensor = distance_sensor.DistanceSensor(5)
+        
+        boatState2 = b.move_into_lock(boatState1, sensor)
         self.assertEqual(boatState2, boat.BoatState.IN_LOCK)
+
+        boatState3 = b.next_phase_land_to_water(boatState2)
         self.assertEqual(boatState3, boat.BoatState.ON_WATER)
 
 
-def main():
-    ding = distance_sensor.DistanceSensor("dit is een sensor")
-    print(ding.getName())
+# def main():
+#     # ding = distance_sensor.DistanceSensor("dit is een sensor")
+#     # print(ding.getName())
 
-    print(ding.add(1,4))
+#     # print(ding.add(1,4))
     
 
 
